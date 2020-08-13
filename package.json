@@ -1,0 +1,45 @@
+{
+  "name": "luteria-task-list",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Agleylson Melo <agleylsonmelo@outlook.com>",
+  "license": "MIT",
+  "private": true,
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+    }
+  },
+  "lint-staged": {
+    "package/**/*.ts": [
+      "eslint . --ext .ts --fix"
+    ]
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/typeorm/**",
+      "**/typeorm"
+    ]
+  },
+  "devDependencies": {
+    "@luteria-task-list/eslint": "*",
+    "@types/jest": "^26.0.9",
+    "commitizen": "^4.1.2",
+    "cz-conventional-changelog": "3.2.0",
+    "husky": "^4.2.5",
+    "jest": "^26.4.0",
+    "lint-staged": "^10.2.11",
+    "ts-jest": "^26.2.0",
+    "typescript": "^3.9.7"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
